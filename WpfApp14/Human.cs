@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Globalization;
+using System.Text.RegularExpressions;
 using System.Windows.Controls;
 
 namespace WpfApp14
@@ -22,6 +23,17 @@ namespace WpfApp14
                         if (Name.Length < 2)
                             errorInfo = "Имя слишком короткое";
                         break;
+                    case "Email":
+                        if (Email != null)
+                        {
+                            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+                            if (!regex.Match(Email).Success)
+                                errorInfo = "Введен неверный email";
+                        }
+                        else
+                            errorInfo = "Email не введен!";
+                        break;
+                            
                 }
                 return errorInfo;
             }
@@ -29,6 +41,7 @@ namespace WpfApp14
 
         public string Name { get; set; }
         public int Age { get; set; }
+        public string Email { get; set; }
 
         public string Error { get; private set; }
     }

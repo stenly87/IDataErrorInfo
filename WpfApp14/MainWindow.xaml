@@ -18,7 +18,7 @@
     </Window.Resources>
     <StackPanel DataContext="{Binding EditHuman}">
         <Label Content="Имя"/>
-        <TextBox Validation.ErrorTemplate="{StaticResource TextErrorTemplate}" Width="100" Padding="5" HorizontalAlignment="Left">
+        <TextBox Validation.ErrorTemplate="{StaticResource TextErrorTemplate}" Width="150" Padding="5" HorizontalAlignment="Left">
             <TextBox.Text>
                 <Binding Path="Name">
                     <Binding.ValidationRules>
@@ -28,9 +28,19 @@
             </TextBox.Text>
         </TextBox>
         <Label Content="Возраст"/>
-        <TextBox Padding="5" HorizontalAlignment="Left" Width="100" Validation.ErrorTemplate="{StaticResource TextErrorTemplate}">
+        <TextBox Padding="5" HorizontalAlignment="Left" Width="150" Validation.ErrorTemplate="{StaticResource TextErrorTemplate}">
             <TextBox.Text>
                 <Binding Path="Age">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Label Content="Email"/>
+        <TextBox Padding="5" HorizontalAlignment="Left" Width="150" Validation.ErrorTemplate="{StaticResource TextErrorTemplate}">
+            <TextBox.Text>
+                <Binding Path="Email">
                     <Binding.ValidationRules>
                         <DataErrorValidationRule/>
                     </Binding.ValidationRules>
