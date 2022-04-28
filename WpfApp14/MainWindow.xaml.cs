@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,7 +31,12 @@ namespace WpfApp14
 
         private void Save(object sender, RoutedEventArgs e)
         {
-
+            System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient();
+            client.Host = "smtp server";
+            client.Port = 25; // "smtp port";
+            client.EnableSsl = false;
+            client.Credentials = new NetworkCredential("логин", "пароль");
+            client.Send("от кого", "кому", "тема", "лох");
         }
     }
 }
